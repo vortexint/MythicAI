@@ -3,9 +3,6 @@
 
 import { name, version } from "../package.json";
 
-import logo from "./assets/mythicai.png";
-import logoTransparent from "./assets/mythicai-transparent.png";
-
 </script>
 
 <template>
@@ -29,7 +26,7 @@ import logoTransparent from "./assets/mythicai-transparent.png";
 
       <div className="side-menu">
         <div className="side-menu-content">
-          <h2><img className="logo" src={{logoTransparent}} alt="MythicAI" />alpha <sub>v{{ version }}</sub></h2>
+          <h2><img className="logo" src="/mythicai-transparent.png" alt="MythicAI" />alpha <sub>v{{ version }}</sub></h2>
           <hr />
           <div className="button-container">
             <button><span className="material-symbols-outlined">add</span> New Project</button>
