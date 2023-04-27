@@ -1,0 +1,481 @@
+@import 'normalize.css';
+/*@import 'material-icons/iconfont/material-icons.css';*/
+@import 'material-symbols';
+
+@font-face {
+  font-family: 'NotoSerif';
+  src: url('./fonts/NotoSerif.woff2') format('woff2'),
+    url('./fonts/NotoSerif.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'NotoSans';
+  src: url('./fonts/NotoSans.woff2') format('woff2'),
+    url('./fonts/NotoSans.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'NotoMono';
+  src: url('./fonts/NotoMono.woff2') format('woff2'),
+    url('./fonts/NotoMono.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* The UI text should use a slightly less intense color, as to not be
+distracting from the project's contents. */
+
+:root {
+  --primaryColor: #25262a;
+  --secondaryColor: #212226;
+  --tertiaryColor: #3b3c3f;
+  /* Border color */
+  --textNormal: #bebebf;
+  --textFocus: #fff;
+  --textLink: #7bacdd;
+  --textHighlight: #deba7c;
+  --textHint: lightslategray;
+  --textError: #d64541;
+  /* Plugins */
+  --pluginOn: rgba(0, 128, 0, 0.1);
+  --pluginOff: rgba(128, 0, 0, 0.1);
+  /* misc */
+  --appTitlebarHeight: 25px;
+
+  font-family: 'NotoSerif';
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+
+  color: var(--textNormal);
+  background-color: var(--primaryColor);
+  border-color: var(--tertiaryColor);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+a {
+  text-decoration: none;
+  color: var(--textLink)
+}
+
+a:hover {
+  color: var(--textFocus);
+}
+
+/* Base button template */
+button {
+  border: 1px solid var(--tertiaryColor);
+  background-color: transparent;
+  font: inherit;
+  color: inherit;
+  display: inline-flex;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  justify-content: center;
+  transition: 100ms ease-in-out;
+}
+
+button.nostretch {
+  align-self: flex-start;
+  aspect-ratio: 1/1;
+}
+
+button:hover {
+  background-color: var(--tertiaryColor);
+}
+
+button:hover span {
+  text-shadow: 0 0 5px;
+  transition: 100ms ease-in-out;
+}
+
+button:active {
+  background-color: transparent;
+}
+
+button:active span {
+  text-shadow: none;
+}
+
+.button-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.button-container button {
+  flex: 0 0 calc(50% - 5px);
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+/* Horizontal rule*/
+
+hr {
+  border: 1px solid var(--tertiaryColor);
+}
+
+/* .App .workspace is the full "Desktop" of the app, it can be pushed aside by .App .side-menu */
+.App {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  height: calc(100vh - var(--appTitlebarHeight));
+  width: 100%;
+  overflow: hidden;
+  margin-top: var(--appTitlebarHeight);
+}
+
+.fake-window-titlebar {
+  font-family: "NotoSans";
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: var(--appTitlebarHeight);
+  background-color: var(--secondaryColor);
+  border: 1px solid var(--tertiaryColor);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+  overflow: hidden;
+  font-size: small;
+}
+
+.fake-window-titlebar .titlebar-buttons {
+  display: flex;
+}
+
+.fake-window-titlebar .titlebar-buttons button {
+  aspect-ratio: 1/1;
+  display: inline-flex;
+  align-items: center;
+}
+
+.right {
+  /* set to start from top right */
+  width: 100%;
+  flex-direction: row-reverse;
+}
+
+.fake-window-titlebar .titlebar-title {
+  width: 100%;
+  text-align: center;
+  position: fixed;
+}
+
+.fake-window-titlebar button {
+  background-color: transparent;
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+  z-index: 100;
+}
+
+.fake-window-titlebar button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.fake-window-titlebar button:active {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.App .workspace {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 100%;
+  overflow: hidden;
+  user-select: text;
+  -webkit-user-select: text;
+}
+
+.App .workspace .titlebar-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* separate the button and title */
+  width: 100%;
+  background-color: var(--secondaryColor);
+  border: 1px solid var(--tertiaryColor);
+}
+
+.App .workspace .titlebar-wrapper .side-menu-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  width: 36px;
+  height: 36px;
+}
+
+.App .workspace .titlebar-wrapper .separator {
+  width: 1px;
+  height: calc(100% - 16px);
+  background-color: var(--tertiaryColor);
+  margin: 0 8px;
+  /* Add some horizontal margin to create space around the separator */
+}
+
+.App .workspace .titlebar {
+  flex: 1;
+  text-align: center;
+}
+
+.App .side-menu {
+  background-color: var(--secondaryColor);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 300px;
+  padding: 10px;
+  text-align: center;
+  overflow: hidden;
+  border: 1px solid var(--tertiaryColor);
+  transition: 300ms ease-in-out;
+  margin-right: 4px;
+}
+
+.App .side-menu .side-menu-content {
+  width: 300px;
+  transition: 300ms ease-in-out;
+}
+
+.App .side-menu.collapsed {
+  width: 0;
+  padding: 0;
+  margin-right: 0;
+  border: none;
+}
+
+.App .side-menu.collapsed .side-menu-content {
+  transform: translateX(-100%);
+}
+
+.App .side-menu .logo {
+  flex: 0 0 50px;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.App .side-menu button {
+  justify-content: left;
+}
+
+/* Context menu*/
+
+.context-menu {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--secondaryColor);
+  border: 1px solid var(--tertiaryColor);
+  border-radius: 5px;
+  margin-top: 5px;
+  z-index: 10;
+}
+
+.context-menu button {
+  border: none;
+  background-color: transparent;
+  text-align: left;
+  padding: 5px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.context-menu button:hover {
+  background-color: var(--tertiaryColor);
+}
+
+/* Modal popup */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity 300ms ease-in-out;
+  user-select: text;
+  -webkit-user-select: text;
+}
+
+.modal-overlay.visible {
+  opacity: 1;
+}
+
+.modal {
+  background-color: var(--secondaryColor);
+  border: 1px solid var(--tertiaryColor);
+  border-radius: 5px;
+  padding: 20px;
+  position: relative;
+  width: auto; /* Change this to a relative width for responsiveness */
+  max-width: auto;
+  max-height: 80%;
+  overflow: scroll;
+  transform: translateY(-50px);
+  opacity: 0;
+  animation: modalAppear 300ms forwards ease-in-out;
+
+  /* Add these properties for responsiveness */
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+.modal h1, h2, h3, sub {
+  margin: 0;
+  text-align: center;
+}
+
+@keyframes modalAppear {
+  0% {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+  background-color: transparent;
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+}
+
+.modal-close:hover {
+  color: var(--textError);
+}
+
+.modal .logo {
+  flex: 0 0 50px;
+  width: 500px;
+  margin: 0 auto;  
+}
+
+.modal .notice {
+  max-width: 500px;
+  overflow-y: auto;
+  padding-right: 10px;
+  font-family: "NotoMono", monospace;
+  font-size: small;
+  background-color: #1e1e22;
+  padding: 10px;
+}
+
+.modal .notice h1,
+.modal .notice h2,
+.modal .notice h3,
+.modal .notice p {
+  word-wrap: break-word;
+}
+
+/* Plugin section for modal */
+
+.plugin-container {
+  font-family: 'NotoMono', monospace;;
+  font-size: small;
+}
+
+.plugin-container .button-container {
+  border: 1px solid var(--tertiaryColor);
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-top: none;
+}
+
+.plugin-container .button-container button {
+  flex: 0 0 calc(100% / 3);
+  flex-wrap: nowrap;
+  border-radius: 0;
+  border: none;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.url-input {
+  flex-grow: 1;
+  margin: 0 5px;
+  padding: 5px;
+  border: 1px solid var(--tertiaryColor);
+  border-radius: 5px;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  transition: width 300ms ease-in-out;
+}
+
+.plugins-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid var(--tertiaryColor);
+}
+
+.plugins-table td {
+  text-align: left;
+  border: 1px solid var(--tertiaryColor);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; /* Add this property to handle text overflow */
+  max-height: 24px;
+}
+
+.plugins-table th {
+  text-align: center;
+  border: 1px solid var(--tertiaryColor);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 24px; /* Adjust this value according to your desired cell height */
+}
+
+.plugins-table tr.enabled {
+  background-color: var(--pluginOn)
+}
+
+.plugins-table tr.disabled {
+  background-color: var(--pluginOff)
+}
+
+.plugins-table button {
+  aspect-ratio: 1/1;
+  
+  border: none;
+}

@@ -1,0 +1,11 @@
+name: core-playground
+repository: https://github.com/vortexdevsoftware/MythicAI
+version: master
+creators:
+  - Igor Alexey
+  # Add your name here if contributed.
+description: >
+  Basic project type: text-completion, settings.
+
+# License Information
+license: GPL-3.0 license

@@ -1,0 +1,28 @@
+# Plugin Configuration Template
+
+# Basic Information
+name: PLUGIN_NAME
+repository: REPOSITORY_URL
+creators:
+  - Creator 1
+  - Creator 2
+description: >
+  A brief description of the plugin and its functionality.
+
+# License Information
+license: LICENSE_NAME
+
+# Custom Plugin Settings
+settings:
+  option1: default_value
+  option2: default_value
+
+# Plugin Dependencies
+dependencies:
+  - dependency1
+  - dependency2
+
+# Additional Configuration (if needed)
+additional_config:
+  key1: value1
+  key2: value2
