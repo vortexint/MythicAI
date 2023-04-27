@@ -2,37 +2,51 @@
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
 
 import { name, version } from "../package.json";
+import { ref, onMounted } from 'vue';
+
+const menuCollapsed = ref(false);
+
+function handleKeyDown(event) {
+  if (event.code === 'Escape') {
+    menuCollapsed.value = !menuCollapsed.value;
+    console.log("toggle menu")
+  }
+}
+
+onMounted(() => {
+  window.addEventListener('keydown', handleKeyDown);
+});
 
 </script>
 
 <template>
-  <div className="App">
-    <div className="fake-window-titlebar">
-        <div className="titlebar-buttons left">
+  <div class="App">
+    <div class="fake-window-titlebar">
+        <div class="titlebar-buttons left">
           <button>
-            <span className="material-symbols-outlined">close</span>
+            <span class="material-symbols-outlined">close</span>
           </button>
           <button>
-            <span className="material-symbols-outlined">expand_less</span>
+            <span class="material-symbols-outlined">expand_less</span>
           </button>
           <button>
-            <span className="material-symbols-outlined">expand_more</span>
+            <span class="material-symbols-outlined">expand_more</span>
           </button>
         </div>
-        <div data-tauri-drag-region className="titlebar-title">
+        <div data-tauri-drag-region class="titlebar-title">
           <span>MythicAI</span>
         </div>
       </div>
 
-      <div className="side-menu">
-        <div className="side-menu-content">
-          <h2><img className="logo" src="/mythicai-transparent.png" alt="MythicAI" />alpha <sub>v{{ version }}</sub></h2>
+      <div :class="{ 'side-menu': true, 'collapsed': menuCollapsed }">
+        <div class="side-menu-content">
+          <h2><img class="logo" src="/mythicai-transparent.png" alt="MythicAI" />alpha <sub>v{{ version }}</sub></h2>
           <hr />
-          <div className="button-container">
-            <button><span className="material-symbols-outlined">add</span> New Project</button>
-            <button><span className="material-symbols-outlined">history</span> Open Project</button>
-            <button><span className="material-symbols-outlined">extension</span> Plugins</button>
-            <button><span className="material-symbols-outlined">settings</span> Settings</button>
+          <div class="button-container">
+            <button><span class="material-symbols-outlined">add</span> New Project</button>
+            <button><span class="material-symbols-outlined">history</span> Open Project</button>
+            <button><span class="material-symbols-outlined">extension</span> Plugins</button>
+            <button><span class="material-symbols-outlined">settings</span> Settings</button>
           </div>
           <hr />
           <p>
@@ -42,21 +56,21 @@ import { name, version } from "../package.json";
         </div>
       </div>
       
-      <div className="workspace">
-        <div className="titlebar-wrapper">
-          <button className="side-menu-toggle">
-            <span className="material-symbols-outlined">left_panel_close</span>
+      <div class="workspace">
+        <div class="titlebar-wrapper">
+          <button class="side-menu-toggle">
+            <span class="material-symbols-outlined">left_panel_close</span>
           </button>
-          <button className="side-menu-toggle">
-            <span className="material-symbols-outlined">info</span>
+          <button class="side-menu-toggle">
+            <span class="material-symbols-outlined">info</span>
           </button>
-          <div className="separator" />
-          <div className="titlebar">
+          <div class="separator" />
+          <div class="titlebar">
             <span>title</span>
           </div>
-          <div className="separator" />
+          <div class="separator" />
         </div>
-        <div className="workspace-content">
+        <div class="workspace-content">
           content
         </div>
       </div>
