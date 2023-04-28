@@ -3,13 +3,29 @@
 
 import { name, version } from "../package.json";
 import { ref, onMounted } from 'vue';
+import { appWindow } from '@tauri-apps/api/window';
 
 const menuCollapsed = ref(false);
 
+function toggleMenu() {menuCollapsed.value = !menuCollapsed.value;}
+function closeApp() {appWindow.close();}
+function minimizeApp() {appWindow.minimize();}
+
+async function handleMaximize() {
+  const isMaximized = await appWindow.isMaximized();
+  if (isMaximized) {
+    appWindow.unmaximize();
+  } else {
+    appWindow.maximize();
+  }
+}
+
 function handleKeyDown(event) {
   if (event.code === 'Escape') {
-    menuCollapsed.value = !menuCollapsed.value;
-    console.log("toggle menu")
+    toggleMenu()
+  }
+  if (event.code === 'F11') {
+    handleMaximize()
   }
 }
 
@@ -23,13 +39,13 @@ onMounted(() => {
   <div class="App">
     <div class="fake-window-titlebar">
         <div class="titlebar-buttons left">
-          <button>
+          <button @click="closeApp">
             <span class="material-symbols-outlined">close</span>
           </button>
-          <button>
+          <button @click="handleMaximize">
             <span class="material-symbols-outlined">expand_less</span>
           </button>
-          <button>
+          <button @click="minimizeApp">
             <span class="material-symbols-outlined">expand_more</span>
           </button>
         </div>
@@ -38,7 +54,7 @@ onMounted(() => {
         </div>
       </div>
 
-      <div :class="{ 'side-menu': true, 'collapsed': menuCollapsed }">
+      <div :class="{ 'side-menu': true, 'collapsed': menuCollapsed }"> 
         <div class="side-menu-content">
           <h2><img class="logo" src="/mythicai-transparent.png" alt="MythicAI" />alpha <sub>v{{ version }}</sub></h2>
           <hr />
@@ -52,14 +68,15 @@ onMounted(() => {
           <p>
             <!-- packagejson name + version from import -->
             <sub>{{ name }} v{{ version }}</sub>
+            <br />© {{ new Date().getFullYear() }} <a target="_blank" rel="noopener noreferrer" href="https://vortex-dev.com">Vortex Interactive</a>
           </p>
         </div>
       </div>
       
       <div class="workspace">
         <div class="titlebar-wrapper">
-          <button class="side-menu-toggle">
-            <span class="material-symbols-outlined">left_panel_close</span>
+          <button @click="toggleMenu" class="side-menu-toggle">
+            <span class="material-symbols-outlined">{{ menuCollapsed ? 'left_panel_open' : 'left_panel_close' }}</span>
           </button>
           <button class="side-menu-toggle">
             <span class="material-symbols-outlined">info</span>

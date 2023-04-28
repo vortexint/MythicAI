@@ -21,7 +21,7 @@
         "all": true
       },
       "window": {
-        "all": false,
+        "all": true,
         "close": true,
         "hide": true,
         "show": true,
