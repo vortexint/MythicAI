@@ -9,14 +9,13 @@
 
 ## Download & Installation
 ~~Download the <a href="https://github.com/vortexdevsoftware/MythicAI/releases">latest release</a> for your platform.~~
-_The software is currently in its early stages and is not yet available for download. Please check back later._
+_The software is currently in its early stages and is not yet available for download. Please check again later._
 
 ## Build from Source
 Pre-requisites:<br>
 1. <a href="https://git-scm.com/"><img src="https://git-scm.com/images/logos/downloads/Git-Icon-1788C.svg" height="25"> Git</a><br>
-2. <a href="https://www.python.org/downloads/windows/"><img src="https://s3.dualstack.us-east-2.amazonaws.com/pythondotorg-assets/media/files/python-logo-only.svg" align="center" height="25"> Python 3.10</a><br>
-3. <a href="https://www.rust-lang.org/"><img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Rust_programming_language_black_logo.svg" height="25"><img src="https://foundation.rust-lang.org/img/cargo.png" height="25"> Rust + Cargo</a><br>
-4. <a href="https://tauri.app/">Tauri</a> - <sub>Please check the [tauri prerequisites guide](https://tauri.app/v1/guides/getting-started/prerequisites/) for your system</sub>
+2. <a href="https://www.rust-lang.org/"><img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Rust_programming_language_black_logo.svg" height="25"><img src="https://foundation.rust-lang.org/img/cargo.png" height="25"> Rust + Cargo</a><br>
+3. <a href="https://tauri.app/">Tauri</a> - <sub>Please check the [tauri prerequisites guide](https://tauri.app/v1/guides/getting-started/prerequisites/) for your system</sub>
 
 ### Clone the Repository
 ```shell

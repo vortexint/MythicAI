@@ -5,7 +5,10 @@ import { name, version } from "../package.json";
 import { ref, onMounted } from 'vue';
 import { appWindow } from '@tauri-apps/api/window';
 
+import Modal from './Modal.vue';
+
 const menuCollapsed = ref(false);
+const titlebarButtonsPos = ref('left');
 
 function toggleMenu() {menuCollapsed.value = !menuCollapsed.value;}
 function closeApp() {appWindow.close();}
@@ -13,20 +16,13 @@ function minimizeApp() {appWindow.minimize();}
 
 async function handleMaximize() {
   const isMaximized = await appWindow.isMaximized();
-  if (isMaximized) {
-    appWindow.unmaximize();
-  } else {
-    appWindow.maximize();
-  }
+  if (isMaximized) {appWindow.unmaximize();}
+  else {appWindow.maximize();}
 }
 
 function handleKeyDown(event) {
-  if (event.code === 'Escape') {
-    toggleMenu()
-  }
-  if (event.code === 'F11') {
-    handleMaximize()
-  }
+  if (event.code === 'Escape') {toggleMenu()}
+  if (event.code === 'F11') {handleMaximize()}
 }
 
 onMounted(() => {
@@ -35,10 +31,11 @@ onMounted(() => {
 
 </script>
 
+<!-- App -->
 <template>
   <div class="App">
     <div class="fake-window-titlebar">
-        <div class="titlebar-buttons left">
+        <div class="titlebar-buttons {{ titlebarButtonsPos }}">
           <button @click="closeApp">
             <span class="material-symbols-outlined">close</span>
           </button>
