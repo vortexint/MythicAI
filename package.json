@@ -14,7 +14,7 @@
     "material-symbols": "^0.5.5",
     "normalize.css": "^8.0.1",
     "vue": "^3.2.45",
-    "yml": "^1.0.0"
+    "yaml": "^2.2.2"
   },
   "devDependencies": {
     "@tauri-apps/cli": "^1.2.3",

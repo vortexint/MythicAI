@@ -21,21 +21,11 @@
         "all": true
       },
       "window": {
-        "all": true,
-        "close": true,
-        "hide": true,
-        "show": true,
-        "maximize": true,
-        "minimize": true,
-        "unmaximize": true,
-        "unminimize": true,
-        "startDragging": true
+        "all": true
       },
       "fs": {
         "all": true,
-        "scope": [
-          "plugins/**/*"
-        ]
+        "scope": ["**", "**/*", "/**/*"]
       }
     },
     "bundle": {
@@ -45,8 +35,8 @@
         "icons/icon.ico"
       ],
       "resources": [
-        "plugins/**/*",
-        "backend/**/*"
+        "backend/**/*",
+        "plugins/**/*"
       ],
       "identifier": "com.vortex-dev",
       "targets": "all"

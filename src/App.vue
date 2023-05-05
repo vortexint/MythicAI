@@ -75,14 +75,14 @@ onMounted(() => {
           <button @click="toggleMenu" class="side-menu-toggle">
             <span class="material-symbols-outlined">{{ menuCollapsed ? 'left_panel_open' : 'left_panel_close' }}</span>
           </button>
-          <button class="side-menu-toggle">
-            <span class="material-symbols-outlined">info</span>
-          </button>
           <div class="separator" />
           <div class="titlebar">
             <span>title</span>
           </div>
           <div class="separator" />
+          <button class="side-menu-toggle">
+            <span class="material-symbols-outlined">info</span>
+          </button>
         </div>
         <div class="workspace-content">
           content
