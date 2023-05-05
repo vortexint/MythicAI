@@ -1,0 +1,3 @@
+[submodule "src-tauri/plugins/RPG-Story"]
+	path = src-tauri/plugins/RPG-Story
+	url = https://github.com/vortexdevsoftware/RPG-Story.git
