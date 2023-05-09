@@ -3,6 +3,9 @@ import "./styles.css";
 import App from "./App.vue";
 import YAML from 'yaml'
 import { fs } from '@tauri-apps/api'
+import { resolveResource, runtimeDir } from '@tauri-apps/api/path';
+
+const runtimeDirPath = await runtimeDir();
 
 createApp(App).mount("#app");
 
@@ -61,6 +64,3 @@ class MythicApp {
 } // MythicApp
 
 const app = new MythicApp();
-setTimeout(() => {
-  console.log(app.plugins);
-}, 1000);
