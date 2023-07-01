@@ -1,5 +1,4 @@
 <img src="public/mythicai.png" alt="MythicAI" height="80" align="left">
-<sup>Project Y23</sup>
 <sub>Advanced, shareable, and easily expandable text-generation + miscellaneous platform, designed for modularity and affordability. Local text generation without compromising on quality and versatility. The possibilities of AI now at your finger tips.</sub>
 <hr>
 <p align="center">
