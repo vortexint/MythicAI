@@ -2,7 +2,7 @@
 <sub>Advanced, shareable, and easily expandable text-generation + miscellaneous platform, designed for modularity and affordability. Local text generation without compromising on quality and versatility. The possibilities of AI now at your finger tips.</sub>
 <hr>
 <p align="center">
-<img src="https://github.com/vortexdevsoftware/MythicAI/assets/18470725/e1eb3a8d-dbf2-4b71-a256-9fefdf788dc5" alt="MythicAI" height="400"><br>
+<img src="https://github.com/vortexdevsoftware/MythicAI/assets/18470725/e1eb3a8d-dbf2-4b71-a256-9fefdf788dc5" alt="MythicAI" style="height:400px"><br>
 <sub>Minimalistic interface</sub>
 </p>
 
